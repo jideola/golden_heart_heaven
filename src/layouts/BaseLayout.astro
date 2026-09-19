@@ -9,6 +9,7 @@ import { site, pathFor } from '../config/site';
 import { t } from '../i18n/ui';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import UnderConstruction from '../components/UnderConstruction.astro';
 
 interface Props { locale: Locale; pageKey?: PageKey; title: string; description: string; noindex?: boolean; ogImage?: string }
 const { locale, pageKey, title, description, noindex, ogImage = '/images/og-default.svg' } = Astro.props;
@@ -60,6 +61,7 @@ const jsonLd = {
   </head>
   <body>
     <a class="skip-link" href="#main">{T('skip')}</a>
+    {site.underConstruction && <UnderConstruction locale={locale} />}
     <Header locale={locale} currentKey={pageKey} />
     <main id="main" tabindex="-1">
       <slot />

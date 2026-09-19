@@ -9,6 +9,7 @@ version: 0.2
 #   PUBLIC_SITE_URL       — canonical URL (https://cynthia.jideola.com for preview)
 #   PUBLIC_NOINDEX        — "true" on the preview domain
 #   PUBLIC_FORM_ENDPOINT  — contact form Lambda function URL
+#   PUBLIC_UNDER_CONSTRUCTION — "true" shows the under-construction notice
 
 env:
   variables:

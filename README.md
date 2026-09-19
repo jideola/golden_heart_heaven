@@ -52,6 +52,7 @@ creating a component, a schema entry in `content.config.ts`, and a line in `Sect
 | `PUBLIC_SITE_URL` | Canonical URL. Set by CodeBuild. |
 | `PUBLIC_NOINDEX` | `"true"` on the preview domain; set `"false"` when live on the client's domain. |
 | `PUBLIC_FORM_ENDPOINT` | Contact form Lambda function URL. Empty = `mailto:` fallback. |
+| `PUBLIC_UNDER_CONSTRUCTION` | `"true"` shows the under-construction dialog and banner (default). Set `"false"` at go-live. |
 
 ## Contact form
 

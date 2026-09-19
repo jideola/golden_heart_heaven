@@ -1,0 +1,67 @@
+---
+/**
+ * Under-construction notice: a native <dialog> (focus-trapped, Escape closes) shown
+ * once per browser session, plus a persistent top banner that can reopen it.
+ * Rendered only while site.underConstruction is true (PUBLIC_UNDER_CONSTRUCTION).
+ */
+import type { Locale } from '../config/site';
+import { site } from '../config/site';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const T = t(locale);
+---
+<div class="wip-banner" role="region" aria-label={T('wip.banner')}>
+  <div class="container wip-banner__row">
+    <span><Icon name="sparkles" size={14} /> {T('wip.banner')}</span>
+    <button type="button" class="wip-banner__btn" data-wip-open>{T('wip.bannerCta')}</button>
+  </div>
+</div>
+
+<dialog class="wip" id="wip-dialog" aria-labelledby="wip-title" data-wip-dialog>
+  <form method="dialog" class="wip__box">
+    <span class="wip__eyebrow">{site.legalName}</span>
+    <h2 id="wip-title">{T('wip.title')}</h2>
+    <p>{T('wip.body')}</p>
+    <p class="wip__access">{T('wip.access')}</p>
+    <p class="wip__contact">
+      <a href={site.phoneHref}><Icon name="phone" size={16} /> {site.phone}</a>
+      <a href={`mailto:${site.email}`}><Icon name="mail" size={16} /> {site.email}</a>
+    </p>
+    <button type="submit" class="btn btn--primary wip__dismiss" autofocus>{T('wip.dismiss')}</button>
+  </form>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-wip-dialog]');
+  const KEY = 'ghh-wip-dismissed';
+  const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch { return false; } };
+  const remember = () => { try { sessionStorage.setItem(KEY, '1'); } catch {} };
+  if (dialog && typeof dialog.showModal === 'function') {
+    if (!seen()) dialog.showModal();
+    dialog.addEventListener('close', remember);
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); }); // backdrop click
+    document.querySelectorAll('[data-wip-open]').forEach((b) => b.addEventListener('click', () => dialog.showModal()));
+  }
+</script>
+
+<style>
+  .wip-banner { background: var(--gold-500); color: var(--green-950); font-size: var(--fs-xs); font-weight: 600; }
+  .wip-banner__row { display: flex; align-items: center; justify-content: center; gap: var(--space-4); min-height: 2rem; flex-wrap: wrap; }
+  .wip-banner__row span { display: inline-flex; align-items: center; gap: var(--space-2); }
+  .wip-banner__btn { text-decoration: underline; text-underline-offset: 0.15em; font-weight: 700; color: inherit; padding: 0.25rem 0.4rem; border-radius: var(--radius-sm); }
+  .wip-banner__btn:hover { background: rgb(20 43 31 / 0.08); }
+
+  .wip { margin: auto; border: 0; padding: 0; background: transparent; max-width: min(92vw, 34rem); width: 100%; }
+  .wip::backdrop { background: rgb(20 43 31 / 0.6); backdrop-filter: blur(2px); }
+  .wip__box { background: var(--white); border-radius: var(--radius-lg); padding: clamp(var(--space-5), 5vw, var(--space-7)); box-shadow: var(--shadow-lg); border-top: 6px solid var(--gold-500); }
+  .wip__eyebrow { display: block; font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-text); margin-bottom: var(--space-2); }
+  .wip__box h2 { font-size: var(--fs-xl); margin-bottom: var(--space-3); }
+  .wip__box p { color: var(--ink-700); font-size: var(--fs-sm); }
+  .wip__box p + p { margin-top: var(--space-3); }
+  .wip__access { padding: var(--space-3) var(--space-4); background: var(--cream-100); border-radius: var(--radius-sm); }
+  .wip__contact { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .wip__contact a { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 600; text-decoration: none; }
+  .wip__dismiss { margin-top: var(--space-5); width: 100%; justify-content: center; }
+</style>

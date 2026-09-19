@@ -38,6 +38,8 @@ export const site = {
   /** Build-time flags injected by CodeBuild (see buildspec.yaml / .env.example). */
   formEndpoint: import.meta.env.PUBLIC_FORM_ENDPOINT ?? '',
   noindex: (import.meta.env.PUBLIC_NOINDEX ?? 'true') !== 'false',
+  /** Shows the under-construction dialog + banner. Set PUBLIC_UNDER_CONSTRUCTION=false at go-live. */
+  underConstruction: (import.meta.env.PUBLIC_UNDER_CONSTRUCTION ?? 'true') !== 'false',
   serviceArea: { en: 'Houston, Texas', es: 'Houston, Texas' },
 } as const;
 

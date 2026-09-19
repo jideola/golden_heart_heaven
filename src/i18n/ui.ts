@@ -57,6 +57,12 @@ export const ui = {
     'notfound.cta': 'Back to home',
     'legal.review': 'This page is a draft for review by Golden Heart Haven LLC and its legal counsel.',
     'learnMore': 'Learn More',
+    'wip.title': 'This website is under construction',
+    'wip.body': 'Golden Heart Haven LLC is preparing this site for launch. Content, photos, and features are still being finalized and some information may be incomplete or change. If you need services or assistance, please contact us directly.',
+    'wip.access': 'We are working toward WCAG 2.1 AA accessibility. If any part of this preview is difficult to use, please call or email us and we will help you another way.',
+    'wip.dismiss': 'Continue to the preview',
+    'wip.banner': 'Preview — this website is under construction.',
+    'wip.bannerCta': 'Details',
   },
   es: {
     'lang.name': 'Español',
@@ -113,6 +119,12 @@ export const ui = {
     'notfound.cta': 'Volver al inicio',
     'legal.review': 'Esta página es un borrador para revisión por Golden Heart Haven LLC y su asesor legal.',
     'learnMore': 'Más información',
+    'wip.title': 'Este sitio web está en construcción',
+    'wip.body': 'Golden Heart Haven LLC está preparando este sitio para su lanzamiento. El contenido, las fotos y las funciones aún se están finalizando, y parte de la información puede estar incompleta o cambiar. Si necesita servicios o ayuda, comuníquese con nosotros directamente.',
+    'wip.access': 'Trabajamos para cumplir con la accesibilidad WCAG 2.1 AA. Si alguna parte de esta vista previa le resulta difícil de usar, llámenos o escríbanos y le ayudaremos de otra manera.',
+    'wip.dismiss': 'Continuar a la vista previa',
+    'wip.banner': 'Vista previa — este sitio web está en construcción.',
+    'wip.bannerCta': 'Detalles',
   },
 } as const satisfies Record<Locale, Record<string, string>>;
 
