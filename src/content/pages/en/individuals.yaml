@@ -1,0 +1,43 @@
+key: individuals
+locale: en
+seo:
+  title: For Individuals
+  description: "Your home. Your choices. Your life. At Golden Heart Haven, we believe in your potential and support you in living a meaningful, independent, and fulfilling life."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: For Individuals
+    title: Your Home. Your Choices.
+    accent: Your Life.
+    body: At Golden Heart Haven, we believe in your potential. We are here to support you in living a meaningful, independent, and fulfilling life in your community.
+    primaryCta: { label: Learn More, href: /contact/ }
+    image: { src: /images/placeholders/hero-individuals.svg, alt: "A young man giving a thumbs up and smiling broadly" }
+    sticker: ["Different Abilities.", "Brighter", "Futures."]
+  - type: valueStrip
+    items:
+      - { icon: sparkles, title: Be Yourself }
+      - { icon: hands, title: Make Choices }
+      - { icon: book, title: Build Skills }
+      - { icon: compass, title: Explore Your Interests }
+      - { icon: people, title: Be Part of Your Community }
+  - type: textImage
+    reverse: true
+    title: A Home That
+    accent: Feels Like Yours
+    body:
+      - Your room is your space. Your routine is your routine. We support you in the things you want to do — cooking, working, learning, going out with friends, practicing your faith, or just relaxing.
+      - Our team is here to help you build skills, try new things, and speak up for what you want.
+    bullets:
+      - Help with daily living, health, and wellness
+      - Support to work, volunteer, or join activities
+      - Encouragement to make your own decisions
+      - A team that listens and respects you
+    cta: { label: Come Visit Us, href: /contact/ }
+    image: { src: /images/placeholders/individual.svg, alt: "An individual smiling in a cozy bedroom" }
+  - type: quoteBand
+    quote: People. Purpose. Possibilities.
+    script: true
+  - type: ctaBand
+    title: Want to Learn More?
+    text: Ask a family member, guardian, or service coordinator to reach out — or contact us yourself.
+    primaryCta: { label: Contact Us, href: /contact/ }

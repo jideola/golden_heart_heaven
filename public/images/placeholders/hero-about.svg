@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EDE4D3"/><stop offset="1" stop-color="#C9D8CC"/></linearGradient></defs>
+<rect width="960" height="720" fill="url(#g)"/>
+<circle cx="480.0" cy="302.4" r="79.2" fill="#1B3A2A" opacity="0.12"/>
+<path d="M444.0 302.4 l36.0 36.0 l36.0 -36.0" fill="none" stroke="#1B3A2A" stroke-width="8.64" opacity="0.5" stroke-linecap="round"/>
+<text x="50%" y="446.4" text-anchor="middle" font-family="Georgia, serif" font-size="32.4" fill="#1B3A2A" opacity="0.7">Photo: Founder portrait</text>
+<text x="50%" y="495.0" text-anchor="middle" font-family="sans-serif" font-size="21.599999999999998" fill="#1B3A2A" opacity="0.5">placeholder — replace with licensed image</text>
+</svg>

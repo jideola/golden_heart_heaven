@@ -1,0 +1,12 @@
+key: contact
+locale: es
+seo:
+  title: Contacto
+  description: "Contacte a Golden Heart Haven LLC en Houston, Texas — llame al 832-457-5630 o envíenos un mensaje. Atendemos a familias, individuos y socios de referencia."
+sections:
+  - type: contactForm
+    title: Conectemos
+    intro: Ya sea que usted sea un familiar, coordinador de servicios, profesional de la salud o socio comunitario, nos encantaría saber de usted.
+  - type: quoteBand
+    quote: Donde la compasión se siente como en casa.
+    script: true

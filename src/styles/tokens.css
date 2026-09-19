@@ -1,0 +1,81 @@
+/* ── Design tokens — the single place to retheme the site ─────────────────── */
+:root {
+  /* Brand palette (from the approved mock) */
+  --green-950: #142B1F;
+  --green-900: #1B3A2A;
+  --green-800: #234A35;
+  --green-700: #2F5D43;
+  --green-600: #3E7355;
+  --green-100: #E3ECE5;
+  --gold-600:  #A8822F;   /* AA on cream for text */
+  --gold-500:  #C9A24B;   /* decorative, icons, rules */
+  --gold-100:  #F3E9CF;
+  --cream-50:  #FBF8F2;
+  --cream-100: #F5EFE4;
+  --cream-200: #EDE4D3;
+  --ink-900:   #1F2A24;
+  --ink-700:   #3B473F;
+  --ink-500:   #5C6963;
+  --white:     #FFFFFF;
+
+  /* Semantic */
+  --bg:            var(--cream-50);
+  --bg-alt:        var(--cream-100);
+  --bg-band:       var(--green-800);
+  --surface:       var(--white);
+  --text:          var(--ink-900);
+  --text-muted:    var(--ink-500);
+  --text-on-band:  var(--cream-50);
+  --brand:         var(--green-800);
+  --brand-strong:  var(--green-900);
+  --accent:        var(--gold-500);
+  --accent-text:   var(--gold-600);
+  --border:        var(--cream-200);
+  --focus:         #2B6CB0;
+
+  /* Type */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-script:  'Great Vibes', cursive;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-xs:   0.8125rem;
+  --fs-sm:   0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-md:   1.1875rem;
+  --fs-lg:   1.375rem;
+  --fs-xl:   clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem);
+  --fs-2xl:  clamp(2.125rem, 1.6rem + 2.2vw, 3rem);
+  --fs-3xl:  clamp(2.5rem, 1.8rem + 3vw, 3.75rem);
+  --fs-script: clamp(2.25rem, 1.6rem + 3vw, 3.5rem);
+
+  --lh-tight: 1.15;
+  --lh-snug:  1.3;
+  --lh-body:  1.65;
+
+  /* Spacing & shape */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgb(20 43 31 / 0.06), 0 1px 3px rgb(20 43 31 / 0.08);
+  --shadow-md: 0 6px 20px rgb(20 43 31 / 0.10);
+  --shadow-lg: 0 18px 40px rgb(20 43 31 / 0.16);
+
+  --container: 72rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --header-h: 4.5rem;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 180ms;
+}

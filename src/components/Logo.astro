@@ -1,0 +1,10 @@
+---
+/** Brand mark: house outline with a gold heart. Placeholder for the client's real logo file. */
+interface Props { class?: string; size?: number }
+const { class: cls, size = 44 } = Astro.props;
+---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width={size} height={size} class={cls} aria-hidden="true">
+  <path d="M8 30 32 10l24 20" fill="none" stroke="var(--green-800)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 27v26h36V27" fill="none" stroke="var(--green-800)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M32 47c-7-5.5-11-9-11-14a5.5 5.5 0 0 1 11-1 5.5 5.5 0 0 1 11 1c0 5-4 8.5-11 14Z" fill="var(--gold-500)"/>
+</svg>

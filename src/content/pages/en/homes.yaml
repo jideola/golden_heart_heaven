@@ -1,0 +1,35 @@
+key: homes
+locale: en
+seo:
+  title: Our Homes
+  description: "Warm, comfortable, welcoming homes in Houston where individuals can relax, connect, and feel supported — safe spaces, brighter tomorrows."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Our Homes
+    title: A Place to Feel
+    accent: at Home
+    body: At Golden Heart Haven, we strive to provide warm, comfortable, and welcoming homes where individuals can relax, connect, and feel supported. Our homes are designed to promote safety, dignity, independence, and a true sense of belonging.
+    primaryCta: { label: Schedule a Tour, href: /contact/ }
+    image: { src: /images/placeholders/hero-homes.svg, alt: "The front of a tidy single-story home with a welcoming porch" }
+    sticker: ["Safe Spaces.", "Brighter", "Tomorrows."]
+  - type: imageCollage
+    images:
+      - { src: /images/placeholders/home-4.svg, alt: "A sunlit living area with comfortable seating" }
+      - { src: /images/placeholders/home-1.svg, alt: "A bright, personalized bedroom" }
+      - { src: /images/placeholders/home-2.svg, alt: "A clean, accessible kitchen" }
+      - { src: /images/placeholders/home-3.svg, alt: "A fenced backyard with a patio" }
+      - { src: /images/placeholders/home-5.svg, alt: "A dining table set for a shared meal" }
+    caption: Come See the Difference.
+  - type: valueStrip
+    items:
+      - { icon: home, title: Comfortable Living Spaces }
+      - { icon: shield, title: Safe & Supportive Environment }
+      - { icon: people, title: Community Access }
+      - { icon: heart, title: A Place to Belong }
+  - type: ctaBand
+    title: Come See the
+    accent: Difference.
+    text: We welcome families and referral partners to reach out and discover whether our homes may be a good fit.
+    primaryCta: { label: Schedule a Tour, href: /contact/ }
+    secondaryCta: { label: Contact Us, href: /contact/ }

@@ -1,0 +1,45 @@
+key: home
+locale: es
+seo:
+  title: Inicio
+  description: "Servicios en el Hogar y la Comunidad (HCS) dirigidos por una enfermera para personas con discapacidades intelectuales y del desarrollo en Houston, Texas."
+sections:
+  - type: hero
+    title: Donde la compasión se siente como en
+    accent: casa
+    subtitle: Servicios en el Hogar y la Comunidad (HCS) para personas con discapacidades intelectuales y del desarrollo
+    body: En Golden Heart Haven LLC brindamos servicios HCS compasivos, de alta calidad y centrados en la persona, diseñados para apoyar a cada individuo a vivir una vida plena con dignidad, independencia y pertenencia.
+    primaryCta: { label: Conozca nuestros servicios, href: /es/servicios/ }
+    secondaryCta: { label: Contáctenos, href: /es/contacto/ }
+    badge: Dirigido por una enfermera. Guiado por el corazón. · Con orgullo en Houston, Texas
+    image: { src: /images/placeholders/hero-home.svg, alt: "Una sala luminosa y acogedora con asientos cómodos y flores frescas" }
+    sticker: ["Un mañana", "más brillante", "Juntos"]
+  - type: valueStrip
+    items:
+      - { icon: heart, title: Cuidado compasivo, text: "Amabilidad. Respeto. Comprensión." }
+      - { icon: people, title: Apoyo centrado en la persona, text: "Sus metas. Sus decisiones. Su apoyo." }
+      - { icon: sun, title: Fomentamos la independencia, text: "Habilidades. Confianza. Posibilidades." }
+      - { icon: home, title: Un lugar al que pertenecer, text: "Más que una residencia. Un hogar." }
+  - type: ctaBand
+    title: Capacidades diferentes.
+    accent: Futuros más brillantes.
+    text: Empoderamos a las personas para vivir, aprender, trabajar y pertenecer a su comunidad.
+    primaryCta: { label: Conozca nuestra historia, href: /es/sobre-nosotros/ }
+  - type: cardGrid
+    eyebrow: Lo que ofrecemos
+    title: Apoyo diseñado alrededor de
+    accent: usted
+    intro: Cada servicio se construye en torno a las necesidades, preferencias, metas y plan centrado en la persona de cada individuo.
+    cards:
+      - { icon: home, title: Apoyo residencial, text: "Un ambiente de hogar cómodo con apoyo 24/7 adaptado a cada persona.", link: { label: Más información, href: /es/servicios/ } }
+      - { icon: people, title: Apoyo en la comunidad, text: "Fomentamos la participación, las relaciones y experiencias significativas en la comunidad.", link: { label: Más información, href: /es/servicios/ } }
+      - { icon: sparkles, title: Apoyo individualizado, text: "Cuidado moldeado por las fortalezas, preferencias, capacidades y metas de cada persona.", link: { label: Más información, href: /es/servicios/ } }
+      - { icon: sun, title: Independencia y habilidades para la vida, text: "Apoyo con las actividades diarias y oportunidades para una mayor independencia.", link: { label: Más información, href: /es/servicios/ } }
+  - type: quoteBand
+    quote: Más que un servicio. Un lugar al que pertenecer.
+    script: true
+  - type: ctaBand
+    title: ¿Listo para saber más?
+    text: Invitamos a familias y socios de referencia a comunicarse y descubrir si nuestros hogares son la opción adecuada.
+    primaryCta: { label: Contáctenos, href: /es/contacto/ }
+    secondaryCta: { label: Programe una visita, href: /es/contacto/ }

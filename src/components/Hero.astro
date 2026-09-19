@@ -1,0 +1,60 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+interface Props {
+  eyebrow?: string; title: string; accent?: string; subtitle?: string; body?: string;
+  primaryCta?: { label: string; href: string }; secondaryCta?: { label: string; href: string };
+  image: { src: string; alt: string }; badge?: string; sticker?: string[]; compact?: boolean;
+}
+const { eyebrow, title, accent, subtitle, body, primaryCta, secondaryCta, image, badge, sticker, compact } = Astro.props;
+---
+<section class:list={['hero', { 'hero--compact': compact }]}>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1>{title}{accent && <> <span class="script hero__accent">{accent}</span></>}</h1>
+      {subtitle && <p class="hero__sub">{subtitle}</p>}
+      {body && <p class="lede">{body}</p>}
+      {(primaryCta || secondaryCta) && (
+        <div class="hero__ctas">
+          {primaryCta && <Button href={primaryCta.href}>{primaryCta.label}</Button>}
+          {secondaryCta && <Button href={secondaryCta.href} variant="outline">{secondaryCta.label}</Button>}
+        </div>
+      )}
+      {badge && <p class="hero__badge"><Icon name="heart" size={14} /> {badge}</p>}
+    </div>
+    <div class="hero__media">
+      <img src={image.src} alt={image.alt} width="960" height="720" loading="eager" fetchpriority="high" />
+      {sticker && (
+        <div class="sticker" aria-hidden="true">
+          {sticker.map((line, i) => <span class:list={{ 'sticker__script': i === sticker.length - 1 }}>{line}</span>)}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+<style>
+  .hero { padding-block: clamp(var(--space-6), 6vw, var(--space-8)); background: linear-gradient(180deg, var(--white) 0%, var(--cream-50) 100%); }
+  .hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(var(--space-6), 5vw, var(--space-8)); align-items: center; }
+  .hero__accent { display: inline-block; transform: translateY(0.12em); }
+  .hero__sub { font-family: var(--font-display); font-size: var(--fs-md); color: var(--brand); font-weight: 500; margin-top: var(--space-3); }
+  .hero .lede { margin-top: var(--space-4); }
+  .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+  .hero__badge { display: inline-flex; align-items: center; gap: var(--space-2); margin-top: var(--space-5); font-size: var(--fs-sm); font-weight: 600; color: var(--accent-text); }
+  .hero__media { position: relative; }
+  .hero__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+  .sticker {
+    position: absolute; top: -1.25rem; right: -0.75rem; width: 8.5rem; height: 8.5rem; border-radius: 50%;
+    background: var(--gold-500); color: var(--green-950); display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: var(--space-3); font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; line-height: 1.15;
+    box-shadow: var(--shadow-md); transform: rotate(6deg);
+  }
+  .sticker__script { font-family: var(--font-script); font-size: 1.6rem; font-weight: 400; margin-top: 0.15rem; }
+  .hero--compact { padding-block: var(--space-6); }
+  .hero--compact h1 { font-size: var(--fs-2xl); }
+  @media (max-width: 860px) {
+    .hero__grid { grid-template-columns: 1fr; }
+    .hero__media { order: -1; }
+    .sticker { right: 0.5rem; top: -0.75rem; width: 7rem; height: 7rem; font-size: 0.8rem; }
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+interface Props {
+  eyebrow?: string; title: string; accent?: string; body: string[]; bullets?: string[];
+  cta?: { label: string; href: string }; image: { src: string; alt: string }; reverse?: boolean;
+  quote?: string; quoteBy?: string; sticker?: string[];
+}
+const { eyebrow, title, accent, body, bullets, cta, image, reverse, quote, quoteBy, sticker } = Astro.props;
+---
+<section class="section">
+  <div class:list={['container', 'ti', { 'ti--reverse': reverse }]}>
+    <div class="ti__copy">
+      <SectionHeading eyebrow={eyebrow} title={title} accent={accent} />
+      <div class="prose">
+        {body.map((p) => <p>{p}</p>)}
+        {bullets && (
+          <ul role="list" class="ti__bullets">
+            {bullets.map((b) => <li><Icon name="check" size={18} /><span>{b}</span></li>)}
+          </ul>
+        )}
+      </div>
+      {cta && <div class="ti__cta"><Button href={cta.href}>{cta.label}</Button></div>}
+    </div>
+    <div class="ti__media">
+      <img src={image.src} alt={image.alt} width="800" height="900" loading="lazy" />
+      {quote && (
+        <figure class="ti__quote">
+          <blockquote>“{quote}”</blockquote>
+          {quoteBy && <figcaption>— {quoteBy}</figcaption>}
+        </figure>
+      )}
+      {sticker && (
+        <div class="ti__sticker" aria-hidden="true">
+          {sticker.map((line) => <span>{line}</span>)}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+<style>
+  .ti { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(var(--space-6), 5vw, var(--space-9)); align-items: center; }
+  .ti--reverse .ti__copy { order: 2; }
+  .ti__bullets li { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .ti__bullets svg { flex-shrink: 0; margin-top: 0.3em; color: var(--accent-text); }
+  .ti__cta { margin-top: var(--space-6); }
+  .ti__media { position: relative; }
+  .ti__media img { width: 100%; aspect-ratio: 4 / 4.5; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+  .ti__quote { position: absolute; right: -1rem; bottom: 2rem; max-width: 16rem; background: var(--green-800); color: var(--cream-50); padding: var(--space-5); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); }
+  .ti__quote blockquote { font-family: var(--font-display); font-size: var(--fs-md); line-height: var(--lh-snug); }
+  .ti__quote figcaption { margin-top: var(--space-3); font-size: var(--fs-xs); color: var(--gold-500); font-weight: 600; }
+  .ti__sticker { position: absolute; left: -0.75rem; bottom: -1rem; background: var(--green-800); color: var(--gold-500); font-family: var(--font-script); font-size: 1.5rem; line-height: 1.1; padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); box-shadow: var(--shadow-md); display: flex; flex-direction: column; transform: rotate(-3deg); }
+  @media (max-width: 860px) {
+    .ti { grid-template-columns: 1fr; }
+    .ti--reverse .ti__copy { order: 0; }
+    .ti__media img { aspect-ratio: 4 / 3; }
+    .ti__quote { position: static; max-width: none; margin-top: var(--space-4); }
+  }
+</style>

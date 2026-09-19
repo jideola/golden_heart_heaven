@@ -1,0 +1,60 @@
+---
+/**
+ * One route for every page in every locale.
+ * - `pages` collection: section-based marketing pages (src/content/pages/<locale>/<key>.yaml)
+ * - `legal` collection: Markdown pages (src/content/legal/<locale>/<key>.md)
+ * The URL slug for each (key, locale) comes from src/config/site.ts.
+ */
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionRenderer from '../components/SectionRenderer.astro';
+import { pages } from '../config/site';
+import { t } from '../i18n/ui';
+
+export async function getStaticPaths() {
+  const marketing = await getCollection('pages');
+  const legal = await getCollection('legal');
+  return [
+    ...marketing.map((entry) => ({
+      params: { path: pages[entry.data.key][entry.data.locale] || undefined },
+      props: { kind: 'page' as const, entry },
+    })),
+    ...legal.map((entry) => ({
+      params: { path: pages[entry.data.key][entry.data.locale] },
+      props: { kind: 'legal' as const, entry },
+    })),
+  ];
+}
+
+type Props =
+  | { kind: 'page'; entry: CollectionEntry<'pages'> }
+  | { kind: 'legal'; entry: CollectionEntry<'legal'> };
+const props = Astro.props as Props;
+const locale = props.entry.data.locale;
+const T = t(locale);
+const LegalContent = props.kind === 'legal' ? (await render(props.entry)).Content : null;
+---
+{props.kind === 'page' && (
+  <BaseLayout locale={locale} pageKey={props.entry.data.key} title={props.entry.data.seo.title} description={props.entry.data.seo.description}>
+    {props.entry.data.sections.map((s) => <SectionRenderer section={s} locale={locale} />)}
+  </BaseLayout>
+)}
+{props.kind === 'legal' && LegalContent && (
+  <BaseLayout locale={locale} pageKey={props.entry.data.key} title={props.entry.data.title} description={props.entry.data.description}>
+    <section class="section">
+      <div class="container legal">
+        <h1>{props.entry.data.title}</h1>
+        <div class="rule" />
+        <p class="legal__meta">{props.entry.data.updated}</p>
+        <p class="legal__notice">{T('legal.review')}</p>
+        <div class="prose"><LegalContent /></div>
+      </div>
+    </section>
+  </BaseLayout>
+)}
+<style>
+  .legal { max-width: 70ch; }
+  .legal__meta { color: var(--text-muted); font-size: var(--fs-sm); }
+  .legal__notice { margin-block: var(--space-5); padding: var(--space-3) var(--space-4); background: var(--gold-100); border-left: 4px solid var(--gold-500); font-size: var(--fs-sm); border-radius: var(--radius-sm); }
+</style>

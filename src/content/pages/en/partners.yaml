@@ -1,0 +1,42 @@
+key: partners
+locale: en
+seo:
+  title: Referral Partners
+  description: "Golden Heart Haven partners with service coordinators, case managers, healthcare professionals and social workers to support individuals with IDD in Houston."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Referral Partners
+    title: Let's Work
+    accent: Together
+    body: Golden Heart Haven LLC values collaboration with professionals who support individuals with intellectual and developmental disabilities. We welcome referrals and partnerships with LIDDAs, service coordinators, case managers, healthcare professionals, social workers, and community organizations.
+    primaryCta: { label: Make a Referral, href: /contact/ }
+    secondaryCta: { label: Request Provider Information, href: /contact/ }
+    image: { src: /images/placeholders/hero-partners.svg, alt: "Two professionals shaking hands" }
+  - type: valueStrip
+    items:
+      - { icon: chat, title: Reliable Communication }
+      - { icon: people, title: Person-Centered Approach }
+      - { icon: clock, title: Timely Responsiveness }
+      - { icon: shield, title: Commitment to Quality }
+      - { icon: sparkles, title: Stronger Outcomes Together }
+  - type: textImage
+    title: What You Can Expect
+    accent: From Us
+    body:
+      - We know your caseload is full and your time is limited. We respond quickly, keep you informed, and make placements and transitions as smooth as possible for the individual and their family.
+      - Provider documentation, capacity, and home information are available on request.
+    bullets:
+      - Prompt response to referral inquiries
+      - Clear intake and transition process
+      - Ongoing updates on progress and needs
+      - Participation in service planning meetings
+    cta: { label: Request Provider Information, href: /contact/ }
+    image: { src: /images/placeholders/partners.svg, alt: "A care team collaborating around a table" }
+  - type: quoteBand
+    quote: Together, We Make a Difference.
+    script: true
+  - type: ctaBand
+    title: Ready to Refer?
+    text: Send us a message or call — we will respond within one business day.
+    primaryCta: { label: Make a Referral, href: /contact/ }

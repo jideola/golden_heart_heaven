@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EDE4D3"/><stop offset="1" stop-color="#C9D8CC"/></linearGradient></defs>
+<rect width="800" height="900" fill="url(#g)"/>
+<circle cx="400.0" cy="378.0" r="88.0" fill="#1B3A2A" opacity="0.12"/>
+<path d="M360.0 378.0 l40.0 40.0 l40.0 -40.0" fill="none" stroke="#1B3A2A" stroke-width="9.6" opacity="0.5" stroke-linecap="round"/>
+<text x="50%" y="558.0" text-anchor="middle" font-family="Georgia, serif" font-size="36.0" fill="#1B3A2A" opacity="0.7">Photo: Daily life</text>
+<text x="50%" y="612.0" text-anchor="middle" font-family="sans-serif" font-size="24.0" fill="#1B3A2A" opacity="0.5">placeholder — replace with licensed image</text>
+</svg>

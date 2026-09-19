@@ -1,0 +1,43 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import Icon from './Icon.astro';
+import { t } from '../i18n/ui';
+import type { Locale } from '../config/site';
+interface Props {
+  locale: Locale; eyebrow?: string; title: string; accent?: string; intro?: string; columns?: number;
+  cards: { icon?: string; image?: { src: string; alt: string }; title: string; text: string; link?: { label: string; href: string } }[];
+}
+const { locale, eyebrow, title, accent, intro, columns, cards } = Astro.props;
+const cols = columns ?? (cards.length >= 5 ? 5 : cards.length >= 4 ? 4 : 3);
+const T = t(locale);
+---
+<section class="section section--alt">
+  <div class="container">
+    <SectionHeading eyebrow={eyebrow} title={title} accent={accent} intro={intro} align="center" />
+    <ul role="list" class="cg" style={`--cols:${cols}`}>
+      {cards.map((c) => (
+        <li class="card cg__card">
+          {c.image && <img src={c.image.src} alt={c.image.alt} width="480" height="320" loading="lazy" class="cg__img" />}
+          <div class="cg__body">
+            {c.icon && !c.image && <span class="cg__icon"><Icon name={c.icon} size={22} /></span>}
+            <h3>{c.title}</h3>
+            <p>{c.text}</p>
+            {c.link && <a href={c.link.href} class="cg__link">{c.link.label || T('learnMore')} <Icon name="arrowRight" size={14} /></a>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .cg { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: var(--space-5); }
+  .cg__img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+  .cg__body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); height: 100%; }
+  .cg__icon { display: inline-flex; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--gold-100); color: var(--brand-strong); align-items: center; justify-content: center; margin-bottom: var(--space-2); }
+  .cg__card h3 { font-size: var(--fs-md); }
+  .cg__card p { font-size: var(--fs-sm); color: var(--text-muted); }
+  .cg__link { display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 600; font-size: var(--fs-sm); text-decoration: none; margin-top: auto; padding-top: var(--space-3); }
+  @media (max-width: 1080px) { .cg { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .cg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .cg { grid-template-columns: 1fr; } }
+</style>

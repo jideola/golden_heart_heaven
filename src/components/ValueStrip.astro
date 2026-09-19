@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+interface Props { title?: string; items: { icon: string; title: string; text?: string }[]; variant?: 'icons' | 'compact' }
+const { title, items, variant = 'icons' } = Astro.props;
+---
+<section class:list={['section--tight', 'vs', `vs--${variant}`]}>
+  <div class="container">
+    {title && <h2 class="vs__title">{title}</h2>}
+    <ul role="list" class="vs__list" style={`--n:${items.length}`}>
+      {items.map((it) => (
+        <li class="vs__item">
+          <span class="vs__icon"><Icon name={it.icon} size={26} /></span>
+          <h3>{it.title}</h3>
+          {it.text && <p>{it.text}</p>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .vs { background: var(--white); border-block: 1px solid var(--border); }
+  .vs__title { text-align: center; font-size: var(--fs-xl); margin-bottom: var(--space-6); }
+  .vs__list { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: var(--space-5); }
+  .vs__item { text-align: center; padding: var(--space-3); }
+  .vs__icon { display: inline-flex; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: var(--gold-100); color: var(--brand-strong); align-items: center; justify-content: center; margin-bottom: var(--space-3); box-shadow: inset 0 0 0 2px var(--gold-500); }
+  .vs__item h3 { font-size: var(--fs-base); font-family: var(--font-body); font-weight: 700; color: var(--brand-strong); }
+  .vs__item p { font-size: var(--fs-sm); color: var(--text-muted); margin-top: var(--space-1); }
+  .vs--compact .vs__icon { width: 2.75rem; height: 2.75rem; }
+  .vs--compact .vs__item h3 { font-size: var(--fs-sm); }
+  @media (max-width: 860px) { .vs__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 420px) { .vs__list { grid-template-columns: 1fr; } }
+</style>

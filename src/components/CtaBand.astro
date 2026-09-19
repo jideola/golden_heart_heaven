@@ -1,0 +1,23 @@
+---
+import Button from './Button.astro';
+interface Props { title: string; accent?: string; text?: string; primaryCta: { label: string; href: string }; secondaryCta?: { label: string; href: string } }
+const { title, accent, text, primaryCta, secondaryCta } = Astro.props;
+---
+<section class="section--tight section--band cta">
+  <div class="container cta__row">
+    <div>
+      <h2 class="cta__title">{title}{accent && <> <span class="script">{accent}</span></>}</h2>
+      {text && <p class="lede">{text}</p>}
+    </div>
+    <div class="cta__btns">
+      <Button href={primaryCta.href} variant="gold">{primaryCta.label}</Button>
+      {secondaryCta && <Button href={secondaryCta.href} variant="outline">{secondaryCta.label}</Button>}
+    </div>
+  </div>
+</section>
+<style>
+  .cta__row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; }
+  .cta__title { font-size: var(--fs-xl); }
+  .cta .lede { margin-top: var(--space-2); }
+  .cta__btns { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+</style>

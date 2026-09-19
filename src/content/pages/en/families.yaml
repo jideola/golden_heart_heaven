@@ -1,0 +1,39 @@
+key: families
+locale: en
+seo:
+  title: For Families
+  description: "A partner you can trust — Golden Heart Haven works alongside families and guardians with open communication, respect for choice, and encouragement at every step."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: For Families
+    title: A Partner You Can
+    accent: Trust
+    body: We understand that choosing services for a loved one can feel overwhelming. Families want to know their loved one will be safe, respected, supported, and treated like a person — not a number.
+    primaryCta: { label: Learn More for Families, href: /contact/ }
+    image: { src: /images/placeholders/hero-families.svg, alt: "A mother and her adult daughter hugging on a porch" }
+    sticker: ["You Are", "Not", "Alone."]
+  - type: valueStrip
+    items:
+      - { icon: heart, title: Compassionate Support }
+      - { icon: chat, title: Open Communication }
+      - { icon: hands, title: Respect for Individual Choice }
+      - { icon: sparkles, title: Encouraging Independence }
+      - { icon: shield, title: A Commitment to Quality of Life }
+  - type: textImage
+    title: We Are Here to Support You
+    accent: Every Step of the Way
+    body:
+      - From the first conversation to daily updates, we treat families as partners. You will always know who is supporting your loved one, how they are doing, and how to reach us.
+      - We respect the choices of the individual and the family, and we build every plan around what matters to them — routines, faith, culture, food, hobbies, and goals.
+    bullets:
+      - A single point of contact who knows your loved one
+      - Regular updates and open-door communication
+      - Involvement in planning, reviews, and celebrations
+      - Support navigating HCS services and coordination
+    cta: { label: Talk With Us, href: /contact/ }
+    image: { src: /images/placeholders/family.svg, alt: "A family gathered together, smiling" }
+  - type: ctaBand
+    title: Have Questions?
+    text: We are happy to talk through your situation, answer questions, and help you explore whether we are the right fit.
+    primaryCta: { label: Contact Us, href: /contact/ }

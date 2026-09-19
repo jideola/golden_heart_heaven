@@ -1,0 +1,35 @@
+key: homes
+locale: es
+seo:
+  title: Nuestros Hogares
+  description: "Hogares cálidos, cómodos y acogedores en Houston donde las personas pueden relajarse, conectar y sentirse apoyadas — espacios seguros, mañanas más brillantes."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Nuestros hogares
+    title: Un lugar para sentirse en
+    accent: casa
+    body: En Golden Heart Haven nos esforzamos por ofrecer hogares cálidos, cómodos y acogedores donde las personas puedan relajarse, conectar y sentirse apoyadas. Nuestros hogares están diseñados para promover la seguridad, la dignidad, la independencia y un verdadero sentido de pertenencia.
+    primaryCta: { label: Programe una visita, href: /es/contacto/ }
+    image: { src: /images/placeholders/hero-homes.svg, alt: "El frente de una casa ordenada de una planta con un porche acogedor" }
+    sticker: ["Espacios seguros.", "Mañanas", "más brillantes."]
+  - type: imageCollage
+    images:
+      - { src: /images/placeholders/home-4.svg, alt: "Una sala soleada con asientos cómodos" }
+      - { src: /images/placeholders/home-1.svg, alt: "Un dormitorio luminoso y personalizado" }
+      - { src: /images/placeholders/home-2.svg, alt: "Una cocina limpia y accesible" }
+      - { src: /images/placeholders/home-3.svg, alt: "Un patio trasero cercado con terraza" }
+      - { src: /images/placeholders/home-5.svg, alt: "Una mesa puesta para una comida compartida" }
+    caption: Venga a ver la diferencia.
+  - type: valueStrip
+    items:
+      - { icon: home, title: Espacios cómodos para vivir }
+      - { icon: shield, title: Un entorno seguro y de apoyo }
+      - { icon: people, title: Acceso a la comunidad }
+      - { icon: heart, title: Un lugar al que pertenecer }
+  - type: ctaBand
+    title: Venga a ver la
+    accent: diferencia.
+    text: Invitamos a familias y socios de referencia a comunicarse y descubrir si nuestros hogares son la opción adecuada.
+    primaryCta: { label: Programe una visita, href: /es/contacto/ }
+    secondaryCta: { label: Contáctenos, href: /es/contacto/ }

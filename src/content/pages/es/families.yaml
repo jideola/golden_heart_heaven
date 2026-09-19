@@ -1,0 +1,39 @@
+key: families
+locale: es
+seo:
+  title: Para Familias
+  description: "Un aliado en quien confiar — Golden Heart Haven trabaja junto a familias y tutores con comunicación abierta, respeto por las decisiones y aliento en cada paso."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Para familias
+    title: Un aliado en quien
+    accent: confiar
+    body: Entendemos que elegir servicios para un ser querido puede sentirse abrumador. Las familias quieren saber que su ser querido estará seguro, respetado, apoyado y tratado como una persona — no como un número.
+    primaryCta: { label: Más información para familias, href: /es/contacto/ }
+    image: { src: /images/placeholders/hero-families.svg, alt: "Una madre y su hija adulta abrazándose en un porche" }
+    sticker: ["Usted no", "está", "solo."]
+  - type: valueStrip
+    items:
+      - { icon: heart, title: Apoyo compasivo }
+      - { icon: chat, title: Comunicación abierta }
+      - { icon: hands, title: Respeto por la decisión individual }
+      - { icon: sparkles, title: Fomento de la independencia }
+      - { icon: shield, title: Compromiso con la calidad de vida }
+  - type: textImage
+    title: Estamos aquí para apoyarle
+    accent: en cada paso
+    body:
+      - Desde la primera conversación hasta las actualizaciones diarias, tratamos a las familias como aliadas. Siempre sabrá quién apoya a su ser querido, cómo está y cómo comunicarse con nosotros.
+      - Respetamos las decisiones de la persona y de la familia, y construimos cada plan en torno a lo que les importa — rutinas, fe, cultura, comida, pasatiempos y metas.
+    bullets:
+      - Un único punto de contacto que conoce a su ser querido
+      - Actualizaciones regulares y comunicación de puertas abiertas
+      - Participación en la planificación, las revisiones y las celebraciones
+      - Apoyo para navegar los servicios HCS y su coordinación
+    cta: { label: Hable con nosotros, href: /es/contacto/ }
+    image: { src: /images/placeholders/family.svg, alt: "Una familia reunida, sonriendo" }
+  - type: ctaBand
+    title: ¿Tiene preguntas?
+    text: Con gusto conversamos sobre su situación, respondemos sus preguntas y le ayudamos a explorar si somos la opción adecuada.
+    primaryCta: { label: Contáctenos, href: /es/contacto/ }

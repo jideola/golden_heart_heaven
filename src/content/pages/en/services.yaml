@@ -1,0 +1,43 @@
+key: services
+locale: en
+seo:
+  title: Our Services
+  description: "Person-centered HCS support in Houston: residential, community-based and individualized support, independence and life skills, and collaboration with your care team."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Our Services
+    title: Person-Centered
+    accent: HCS Support
+    body: At Golden Heart Haven LLC, our services are designed around the individual's needs, preferences, goals, and person-centered plan. We are committed to providing compassionate support that promotes independence, dignity, and meaningful community participation.
+    primaryCta: { label: Contact Us to Learn More, href: /contact/ }
+    image: { src: /images/placeholders/hero-services.svg, alt: "A caregiver and an individual laughing together at a kitchen table" }
+    sticker: ["Support Today", "Brighter", "Tomorrows"]
+  - type: cardGrid
+    title: How We
+    accent: Support
+    columns: 3
+    cards:
+      - { image: { src: /images/placeholders/service-residential.svg, alt: "A cozy, well-kept bedroom" }, title: Residential Support, text: "A comfortable home environment designed to support a meaningful life in a welcoming, family-style setting.", link: { label: Learn More, href: /our-homes/ } }
+      - { image: { src: /images/placeholders/service-community.svg, alt: "A small group enjoying a park outing" }, title: Community-Based Support, text: "Encouraging participation, relationships, and meaningful experiences in the community — outings, activities, and connection.", link: { label: Learn More, href: /contact/ } }
+      - { image: { src: /images/placeholders/service-individualized.svg, alt: "One-on-one support during a daily activity" }, title: Individualized Support, text: "Tailored to each individual's strengths, preferences, abilities, and goals — never one-size-fits-all.", link: { label: Learn More, href: /contact/ } }
+      - { image: { src: /images/placeholders/service-independence.svg, alt: "An individual practicing a cooking skill" }, title: Independence & Life Skills, text: "Support with daily living skills and opportunities for greater independence, confidence, and choice.", link: { label: Learn More, href: /for-individuals/ } }
+      - { image: { src: /images/placeholders/service-collaboration.svg, alt: "A care team meeting around a table" }, title: Collaboration, text: "Partnering with families, guardians, service coordinators, case managers, healthcare professionals, and social workers.", link: { label: Learn More, href: /referral-partners/ } }
+  - type: textImage
+    reverse: true
+    title: Your Life. Your Choices.
+    accent: Our Support.
+    body:
+      - Services are provided in accordance with applicable Texas HHS Home and Community-based Services (HCS) program requirements and the services for which Golden Heart Haven LLC is authorized.
+      - Every plan starts with listening — to the individual, their family, and their care team — so that support reflects what matters most to the person receiving it.
+    bullets:
+      - Person-centered planning and goal setting
+      - 24/7 support in a home setting
+      - Health and wellness oversight from a nurse-owned team
+      - Coordination with service coordinators and providers
+    cta: { label: Contact Us to Learn More, href: /contact/ }
+    image: { src: /images/placeholders/individual.svg, alt: "A young man smiling warmly outdoors" }
+  - type: ctaBand
+    title: Ready to Learn More?
+    text: Reach out to discuss how our services can support you or someone you care for.
+    primaryCta: { label: Contact Us, href: /contact/ }

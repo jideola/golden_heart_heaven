@@ -1,0 +1,42 @@
+key: partners
+locale: es
+seo:
+  title: Socios de Referencia
+  description: "Golden Heart Haven colabora con coordinadores de servicios, administradores de casos, profesionales de la salud y trabajadores sociales en Houston."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Socios de referencia
+    title: Trabajemos
+    accent: juntos
+    body: Golden Heart Haven LLC valora la colaboración con los profesionales que apoyan a personas con discapacidades intelectuales y del desarrollo. Recibimos con gusto referencias y alianzas con LIDDAs, coordinadores de servicios, administradores de casos, profesionales de la salud, trabajadores sociales y organizaciones comunitarias.
+    primaryCta: { label: Hacer una referencia, href: /es/contacto/ }
+    secondaryCta: { label: Solicitar información del proveedor, href: /es/contacto/ }
+    image: { src: /images/placeholders/hero-partners.svg, alt: "Dos profesionales estrechándose la mano" }
+  - type: valueStrip
+    items:
+      - { icon: chat, title: Comunicación confiable }
+      - { icon: people, title: Enfoque centrado en la persona }
+      - { icon: clock, title: Respuesta oportuna }
+      - { icon: shield, title: Compromiso con la calidad }
+      - { icon: sparkles, title: Mejores resultados juntos }
+  - type: textImage
+    title: Lo que puede esperar
+    accent: de nosotros
+    body:
+      - Sabemos que su carga de casos es alta y su tiempo limitado. Respondemos con rapidez, le mantenemos informado y hacemos que las colocaciones y transiciones sean lo más fluidas posible para la persona y su familia.
+      - La documentación del proveedor, la capacidad y la información de los hogares están disponibles a solicitud.
+    bullets:
+      - Respuesta pronta a consultas de referencia
+      - Proceso claro de admisión y transición
+      - Actualizaciones continuas sobre avances y necesidades
+      - Participación en reuniones de planificación de servicios
+    cta: { label: Solicitar información del proveedor, href: /es/contacto/ }
+    image: { src: /images/placeholders/partners.svg, alt: "Un equipo de cuidado colaborando alrededor de una mesa" }
+  - type: quoteBand
+    quote: Juntos hacemos la diferencia.
+    script: true
+  - type: ctaBand
+    title: ¿Listo para referir?
+    text: Envíenos un mensaje o llámenos — responderemos dentro de un día hábil.
+    primaryCta: { label: Hacer una referencia, href: /es/contacto/ }

@@ -1,0 +1,144 @@
+---
+/**
+ * Contact form — progressive enhancement.
+ * - JS on:  POSTs JSON to PUBLIC_FORM_ENDPOINT (Lambda function URL), inline success/error.
+ * - JS off: plain form POST to the same endpoint (form-encoded).
+ * - No endpoint configured: falls back to a mailto: link so the preview still works.
+ * Spam: honeypot field `website` (hidden from humans) + timestamp; the Lambda rate-limits by IP.
+ */
+import type { Locale } from '../config/site';
+import { site, pathFor } from '../config/site';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+interface Props { locale: Locale; title: string; intro?: string }
+const { locale, title, intro } = Astro.props;
+const T = t(locale);
+const endpoint = site.formEndpoint;
+const addr = site.address;
+const mailto = `mailto:${site.email}?subject=${encodeURIComponent('Website inquiry — ' + site.legalName)}`;
+---
+<section class="section cf">
+  <div class="container cf__grid">
+    <div class="cf__side">
+      <SectionHeading title={title} intro={intro} />
+      <ul role="list" class="cf__info">
+        <li><span class="cf__ico"><Icon name="phone" size={20} /></span><div><strong>{T('contact.call')}</strong><a href={site.phoneHref}>{site.phone}</a></div></li>
+        <li><span class="cf__ico"><Icon name="mail" size={20} /></span><div><strong>{T('contact.email')}</strong><a href={`mailto:${site.email}`}>{site.email}</a></div></li>
+        <li><span class="cf__ico"><Icon name="mapPin" size={20} /></span><div><strong>{T('contact.visit')}</strong><address>{addr.street}, {addr.city}, {addr.region} {addr.postalCode}</address></div></li>
+        <li><span class="cf__ico"><Icon name="clock" size={20} /></span><div><strong>{T('footer.hours')}</strong><span>{site.hours[locale]}</span></div></li>
+      </ul>
+      <div class="cf__social">
+        <span>{T('contact.follow')}</span>
+        <a href={site.social.facebook} aria-label="Facebook" rel="noopener"><Icon name="facebook" size={18} /></a>
+        <a href={site.social.instagram} aria-label="Instagram" rel="noopener"><Icon name="instagram" size={18} /></a>
+        <a href={site.social.linkedin} aria-label="LinkedIn" rel="noopener"><Icon name="linkedin" size={18} /></a>
+      </div>
+    </div>
+
+    <form class="cf__form card" method="post" action={endpoint || mailto} data-contact-form data-endpoint={endpoint} novalidate>
+      <input type="hidden" name="lang" value={locale} />
+      <input type="hidden" name="ts" value="" data-ts />
+      <p class="cf__hp" aria-hidden="true">
+        <label for="cf-website">Website</label>
+        <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off" />
+      </p>
+
+      <div class="cf__row">
+        <label for="cf-name">{T('form.name')} <span class="req" aria-hidden="true">*</span></label>
+        <input id="cf-name" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div class="cf__row cf__row--2">
+        <div>
+          <label for="cf-email">{T('form.email')} <span class="req" aria-hidden="true">*</span></label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" inputmode="email" />
+        </div>
+        <div>
+          <label for="cf-phone">{T('form.phone')}</label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+        </div>
+      </div>
+      <div class="cf__row">
+        <label for="cf-rel">{T('form.relationship')}</label>
+        <select id="cf-rel" name="relationship">
+          <option value="family">{T('form.relationship.family')}</option>
+          <option value="individual">{T('form.relationship.individual')}</option>
+          <option value="partner">{T('form.relationship.partner')}</option>
+          <option value="other">{T('form.relationship.other')}</option>
+        </select>
+      </div>
+      <div class="cf__row">
+        <label for="cf-msg">{T('form.message')} <span class="req" aria-hidden="true">*</span></label>
+        <textarea id="cf-msg" name="message" rows="5" required></textarea>
+      </div>
+
+      <p class="cf__privacy">{T('form.privacy').replace(/\.\s*[^.]*$/, '.')} <a href={pathFor('privacy', locale)}>{T('nav.privacy')}</a></p>
+
+      <button type="submit" class="btn btn--primary cf__submit">
+        <span data-label>{T('form.submit')}</span><Icon name="arrowRight" size={16} />
+      </button>
+      <p class="cf__status" role="status" aria-live="polite" data-status
+         data-success={T('form.success')} data-error={T('form.error')} data-sending={T('form.sending')}></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  if (form) {
+    const endpoint = form.dataset.endpoint || '';
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    const label = btn.querySelector<HTMLElement>('[data-label]')!;
+    const ts = form.querySelector<HTMLInputElement>('[data-ts]');
+    if (ts) ts.value = String(Date.now());
+
+    form.addEventListener('submit', async (e) => {
+      if (!endpoint) return; // mailto fallback — let the browser handle it
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const original = label.textContent;
+      btn.disabled = true; label.textContent = status.dataset.sending || '…'; status.textContent = ''; status.dataset.state = '';
+      try {
+        const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+        if (!res.ok) throw new Error(String(res.status));
+        status.textContent = status.dataset.success || 'OK'; status.dataset.state = 'ok';
+        form.reset(); if (ts) ts.value = String(Date.now());
+      } catch {
+        status.textContent = status.dataset.error || 'Error'; status.dataset.state = 'err';
+      } finally {
+        btn.disabled = false; label.textContent = original;
+      }
+    });
+  }
+</script>
+
+<style>
+  .cf__grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(var(--space-6), 5vw, var(--space-9)); align-items: start; }
+  .cf__info li { display: flex; gap: var(--space-4); align-items: flex-start; padding-block: var(--space-3); border-bottom: 1px solid var(--border); }
+  .cf__info strong { display: block; font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-text); }
+  .cf__info a { font-weight: 600; text-decoration: none; }
+  .cf__ico { display: inline-flex; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--gold-100); color: var(--brand-strong); align-items: center; justify-content: center; flex-shrink: 0; }
+  address { font-style: normal; }
+  .cf__social { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-5); font-weight: 600; font-size: var(--fs-sm); }
+  .cf__social a { display: inline-flex; padding: 0.45rem; border-radius: 50%; border: 1px solid var(--border); color: var(--brand-strong); }
+  .cf__social a:hover { border-color: var(--gold-500); }
+  .cf__form { padding: clamp(var(--space-5), 4vw, var(--space-7)); }
+  .cf__form:hover { transform: none; box-shadow: var(--shadow-sm); }
+  .cf__row { margin-bottom: var(--space-4); }
+  .cf__row--2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+  label { display: block; font-size: var(--fs-sm); font-weight: 600; margin-bottom: var(--space-2); color: var(--ink-700); }
+  .req { color: var(--accent-text); }
+  input, select, textarea { width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--cream-50); transition: border-color var(--dur) var(--ease); }
+  input:focus, select:focus, textarea:focus { border-color: var(--brand); background: var(--white); outline: none; box-shadow: 0 0 0 3px rgb(35 74 53 / 0.15); }
+  textarea { resize: vertical; min-height: 7rem; }
+  .cf__hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .cf__privacy { font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: var(--space-4); }
+  .cf__submit { width: 100%; justify-content: center; padding-block: 0.95rem; }
+  .cf__submit:disabled { opacity: 0.6; transform: none; box-shadow: none; }
+  .cf__status { margin-top: var(--space-3); font-size: var(--fs-sm); font-weight: 600; min-height: 1.5em; }
+  .cf__status[data-state="ok"] { color: var(--green-700); }
+  .cf__status[data-state="err"] { color: #A33A2E; }
+  @media (max-width: 860px) { .cf__grid { grid-template-columns: 1fr; } .cf__row--2 { grid-template-columns: 1fr; } }
+</style>

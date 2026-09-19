@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { t } from '../i18n/ui';
+import { pathFor } from '../config/site';
+const en = t('en'); const es = t('es');
+---
+<BaseLayout locale="en" title="404" description="Page not found" noindex>
+  <section class="section nf">
+    <div class="container">
+      <p class="script nf__script">Oops</p>
+      <h1>{en('notfound.title')}</h1>
+      <p class="lede">{en('notfound.body')}</p>
+      <p class="lede" lang="es">{es('notfound.body')}</p>
+      <div class="nf__btns">
+        <Button href={pathFor('home', 'en')}>{en('notfound.cta')}</Button>
+        <Button href={pathFor('home', 'es')} variant="outline">{es('notfound.cta')}</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .nf { text-align: center; min-height: 50dvh; display: grid; place-items: center; }
+  .nf .lede { margin-inline: auto; margin-top: var(--space-3); }
+  .nf__btns { display: flex; gap: var(--space-3); justify-content: center; margin-top: var(--space-6); flex-wrap: wrap; }
+</style>

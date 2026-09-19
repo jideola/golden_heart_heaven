@@ -1,0 +1,86 @@
+---
+import type { Locale, PageKey } from '../config/site';
+import { site, navKeys, legalKeys, pathFor } from '../config/site';
+import { t } from '../i18n/ui';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const T = t(locale);
+const year = new Date().getFullYear();
+const addr = site.address;
+---
+<footer class="ftr">
+  <div class="container ftr__grid">
+    <div class="ftr__brand">
+      <a href={pathFor('home', locale)} class="ftr__logo" aria-label={site.legalName}><Logo size={52} /></a>
+      <p class="ftr__name">{site.legalName}</p>
+      <p class="ftr__desc">{T('brand.descriptor')}</p>
+      <p class="script ftr__tag">{T('brand.tagline')}</p>
+      <p class="ftr__nurse">{T('brand.nurseOwned')}</p>
+    </div>
+
+    <nav class="ftr__col" aria-label={T('footer.explore')}>
+      <h2 class="ftr__h">{T('footer.explore')}</h2>
+      <ul role="list">
+        {navKeys.map((k: PageKey) => <li><a href={pathFor(k, locale)}>{T(`nav.${k}` as any)}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="ftr__col">
+      <h2 class="ftr__h">{T('footer.contact')}</h2>
+      <ul role="list" class="ftr__contact">
+        <li><Icon name="phone" size={16} /><a href={site.phoneHref}>{site.phone}</a></li>
+        <li><Icon name="mail" size={16} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><Icon name="mapPin" size={16} /><address>{addr.street}<br />{addr.city}, {addr.region} {addr.postalCode}</address></li>
+        <li><Icon name="clock" size={16} /><span>{site.hours[locale]}</span></li>
+      </ul>
+      <div class="ftr__social">
+        <span>{T('contact.follow')}</span>
+        <a href={site.social.facebook} aria-label="Facebook" rel="noopener"><Icon name="facebook" size={18} /></a>
+        <a href={site.social.instagram} aria-label="Instagram" rel="noopener"><Icon name="instagram" size={18} /></a>
+        <a href={site.social.linkedin} aria-label="LinkedIn" rel="noopener"><Icon name="linkedin" size={18} /></a>
+      </div>
+    </div>
+
+    <div class="ftr__col">
+      <h2 class="ftr__h">{T('footer.legal')}</h2>
+      <ul role="list">
+        {legalKeys.map((k: PageKey) => <li><a href={pathFor(k, locale)}>{T(`nav.${k}` as any)}</a></li>)}
+      </ul>
+      <p class="ftr__fine">{T('footer.hcs')}</p>
+    </div>
+  </div>
+
+  <div class="ftr__bottom">
+    <div class="container ftr__bottom-row">
+      <p>© {year} {site.legalName}. {T('footer.rights')}</p>
+      <p class="ftr__fine">{T('footer.nondiscrimination')}</p>
+    </div>
+  </div>
+</footer>
+<style>
+  .ftr { background: var(--green-900); color: rgb(251 248 242 / 0.85); margin-top: auto; }
+  .ftr a { color: var(--cream-50); text-decoration: none; }
+  .ftr a:hover { color: var(--gold-500); }
+  .ftr__grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1fr; gap: var(--space-7); padding-block: var(--space-8) var(--space-7); }
+  .ftr__logo { display: inline-block; background: var(--cream-50); border-radius: var(--radius-md); padding: var(--space-2); margin-bottom: var(--space-3); }
+  .ftr__name { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); color: var(--white); }
+  .ftr__desc { font-size: var(--fs-sm); }
+  .ftr__tag { font-size: 1.75rem; color: var(--gold-500); margin-top: var(--space-3); }
+  .ftr__nurse { font-size: var(--fs-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-500); font-weight: 600; margin-top: var(--space-2); }
+  .ftr__h { font-family: var(--font-body); font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-500); margin-bottom: var(--space-4); }
+  .ftr__col li + li { margin-top: var(--space-2); }
+  .ftr__contact li { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .ftr__contact svg { flex-shrink: 0; margin-top: 0.3em; color: var(--gold-500); }
+  address { font-style: normal; }
+  .ftr__social { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-5); font-size: var(--fs-sm); }
+  .ftr__social a { display: inline-flex; padding: 0.4rem; border: 1px solid rgb(251 248 242 / 0.25); border-radius: 50%; }
+  .ftr__social a:hover { border-color: var(--gold-500); }
+  .ftr__fine { font-size: var(--fs-xs); color: rgb(251 248 242 / 0.65); margin-top: var(--space-4); }
+  .ftr__bottom { border-top: 1px solid rgb(251 248 242 / 0.15); padding-block: var(--space-4); font-size: var(--fs-xs); }
+  .ftr__bottom-row { display: flex; justify-content: space-between; gap: var(--space-5); flex-wrap: wrap; }
+  .ftr__bottom .ftr__fine { margin-top: 0; }
+  @media (max-width: 960px) { .ftr__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .ftr__grid { grid-template-columns: 1fr; gap: var(--space-6); } }
+</style>

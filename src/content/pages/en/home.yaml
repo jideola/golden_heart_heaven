@@ -1,0 +1,45 @@
+key: home
+locale: en
+seo:
+  title: Home
+  description: "Nurse-owned Home & Community Based Services (HCS) for individuals with intellectual and developmental disabilities in Houston, Texas. Compassionate, person-centered care."
+sections:
+  - type: hero
+    title: Where Compassion Feels Like
+    accent: Home
+    subtitle: Home & Community Based Services (HCS) for Individuals with Intellectual and Developmental Disabilities
+    body: At Golden Heart Haven LLC, we provide compassionate, high-quality, person-centered HCS services designed to support individuals in living meaningful lives with dignity, independence, and belonging.
+    primaryCta: { label: Learn About Our Services, href: /services/ }
+    secondaryCta: { label: Contact Us, href: /contact/ }
+    badge: Nurse-Owned. Heart-Led. · Proudly serving Houston, Texas
+    image: { src: /images/placeholders/hero-home.svg, alt: "A bright, welcoming living room with soft seating and fresh flowers" }
+    sticker: ["A Brighter", "Tomorrow", "Together"]
+  - type: valueStrip
+    items:
+      - { icon: heart, title: Compassionate Care, text: "Kindness. Respect. Understanding." }
+      - { icon: people, title: Person-Centered Support, text: "Your goals. Your choices. Your support." }
+      - { icon: sun, title: Promoting Independence, text: "Skills. Confidence. Possibilities." }
+      - { icon: home, title: A Place to Belong, text: "More than a residence. A home." }
+  - type: ctaBand
+    title: Different Abilities.
+    accent: Brighter Futures.
+    text: Empowering individuals to live, learn, work, and belong in their communities.
+    primaryCta: { label: Learn Our Story, href: /about/ }
+  - type: cardGrid
+    eyebrow: What We Offer
+    title: Support Designed Around
+    accent: You
+    intro: Every service is built around the individual's needs, preferences, goals, and person-centered plan.
+    cards:
+      - { icon: home, title: Residential Support, text: "A comfortable home environment with 24/7 support tailored to each person.", link: { label: Learn More, href: /services/ } }
+      - { icon: people, title: Community-Based Support, text: "Encouraging participation, relationships, and meaningful experiences in the community.", link: { label: Learn More, href: /services/ } }
+      - { icon: sparkles, title: Individualized Support, text: "Care shaped by each individual's strengths, preferences, abilities, and goals.", link: { label: Learn More, href: /services/ } }
+      - { icon: sun, title: Independence & Life Skills, text: "Support with daily living skills and opportunities for greater independence.", link: { label: Learn More, href: /services/ } }
+  - type: quoteBand
+    quote: More than a service. A place to belong.
+    script: true
+  - type: ctaBand
+    title: Ready to Learn More?
+    text: We welcome families and referral partners to reach out and discover whether our homes may be a good fit.
+    primaryCta: { label: Contact Us, href: /contact/ }
+    secondaryCta: { label: Schedule a Tour, href: /contact/ }

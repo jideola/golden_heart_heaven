@@ -1,0 +1,35 @@
+version: 0.2
+
+# ── golden_heart_heaven — Build stage buildspec ───────────────────────────────
+#
+# Env vars injected by Terraform (module/aws/static_frontend/pipeline):
+#   AWS_REGION            — us-east-1
+#   STATIC_BUCKET         — CloudFront S3 origin bucket
+#   CLOUDFRONT_DIST_ID    — CloudFront distribution ID
+#   PUBLIC_SITE_URL       — canonical URL (https://cynthia.jideola.com for preview)
+#   PUBLIC_NOINDEX        — "true" on the preview domain
+#   PUBLIC_FORM_ENDPOINT  — contact form Lambda function URL
+
+env:
+  variables:
+    NODE_ENV: production
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 24
+    commands:
+      # npm ci needs devDependencies-free install; everything the build needs is in dependencies.
+      - npm ci
+
+  build:
+    commands:
+      - npm run build
+
+  post_build:
+    commands:
+      # ── Sync static output and invalidate CloudFront ───────────────────────
+      # Hashed assets are immutable; HTML and everything else is short-cached.
+      - aws s3 sync dist/_astro/ s3://$STATIC_BUCKET/_astro/ --region $AWS_REGION --cache-control "public,max-age=31536000,immutable"
+      - aws s3 sync dist/ s3://$STATIC_BUCKET/ --delete --region $AWS_REGION --exclude "_astro/*" --cache-control "public,max-age=300"
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DIST_ID --paths "/*" --region $AWS_REGION

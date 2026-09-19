@@ -1,0 +1,113 @@
+---
+import type { Locale, PageKey } from '../config/site';
+import { site, navKeys, pathFor } from '../config/site';
+import { t } from '../i18n/ui';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import LangToggle from './LangToggle.astro';
+
+interface Props { locale: Locale; currentKey?: PageKey }
+const { locale, currentKey } = Astro.props;
+const T = t(locale);
+const navLabel = (k: PageKey) => T(`nav.${k}` as any);
+---
+<header class="hdr">
+  <div class="hdr__top">
+    <div class="container hdr__topbar">
+      <span class="pill"><Icon name="mapPin" size={14} /> {site.serviceArea[locale]}</span>
+      <div class="hdr__topbar-right">
+        <span class="hdr__ppp">{T('brand.ppp')}</span>
+        <a class="hdr__phone" href={site.phoneHref}><Icon name="phone" size={14} /> {site.phone}</a>
+        <LangToggle locale={locale} currentKey={currentKey} />
+      </div>
+    </div>
+  </div>
+
+  <div class="container hdr__bar">
+    <a class="hdr__brand" href={pathFor('home', locale)} aria-label={`${site.legalName} — ${T('nav.home')}`}>
+      <Logo size={46} />
+      <span class="hdr__brand-text">
+        <span class="hdr__name">{site.name} <small>LLC</small></span>
+        <span class="hdr__desc">{T('brand.descriptor')}</span>
+        <span class="hdr__tag script">{T('brand.tagline')}</span>
+      </span>
+    </a>
+
+    <button class="hdr__toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <Icon name="menu" size={22} class="i-open" /><Icon name="close" size={22} class="i-close" />
+      <span class="visually-hidden">{T('nav.menu')}</span>
+    </button>
+
+    <nav id="site-nav" class="hdr__nav" aria-label="Primary">
+      <ul role="list">
+        {navKeys.map((k) => (
+          <li>
+            <a href={pathFor(k, locale)} aria-current={k === currentKey ? 'page' : undefined}>{navLabel(k)}</a>
+          </li>
+        ))}
+      </ul>
+      <a href={pathFor('contact', locale)} class="btn btn--primary hdr__cta">{T('nav.contactCta')}</a>
+      <div class="hdr__nav-mobile-extra">
+        <a class="hdr__phone" href={site.phoneHref}><Icon name="phone" size={14} /> {site.phone}</a>
+        <LangToggle locale={locale} currentKey={currentKey} />
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = document.getElementById('site-nav');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('is-open', !open);
+    document.body.classList.toggle('nav-open', !open);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav?.classList.contains('is-open')) toggle?.click();
+  });
+</script>
+
+<style>
+  .hdr { position: sticky; top: 0; z-index: 50; background: var(--white); box-shadow: var(--shadow-sm); }
+  .hdr__top { background: var(--cream-100); border-bottom: 1px solid var(--border); font-size: var(--fs-xs); }
+  .hdr__topbar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 2.25rem; }
+  .hdr__topbar-right { display: flex; align-items: center; gap: var(--space-5); }
+  .hdr__ppp { font-family: var(--font-script); font-size: 1.25rem; color: var(--accent-text); line-height: 1; }
+  .hdr__phone { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 600; text-decoration: none; color: var(--brand-strong); }
+  .hdr__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: var(--header-h); padding-block: var(--space-2); width: min(100% - 2 * var(--gutter), 84rem); }
+  .hdr__brand { display: flex; align-items: center; gap: var(--space-3); text-decoration: none; color: inherit; flex-shrink: 0; }
+  .hdr__brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .hdr__name { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--brand-strong); }
+  .hdr__name small { font-size: 0.7em; font-weight: 500; color: var(--accent-text); }
+  .hdr__desc { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; letter-spacing: 0.02em; }
+  .hdr__tag { font-size: 1rem; color: var(--accent-text); margin-top: 2px; }
+  .hdr__nav { display: flex; align-items: center; gap: var(--space-4); }
+  .hdr__nav ul { display: flex; gap: clamp(0.5rem, 1.1vw, 1.1rem); flex-wrap: nowrap; white-space: nowrap; }
+  .hdr__nav a:not(.btn) { text-decoration: none; font-size: 0.875rem; font-weight: 500; color: var(--ink-700); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
+  .hdr__nav a:not(.btn):hover { color: var(--brand-strong); }
+  .hdr__nav a[aria-current="page"] { color: var(--brand-strong); font-weight: 600; border-bottom-color: var(--gold-500); }
+  .hdr__cta { padding: 0.65rem 1rem; white-space: nowrap; }
+  .hdr__nav-mobile-extra { display: none; }
+  .hdr__toggle { display: none; width: 2.75rem; height: 2.75rem; border-radius: var(--radius-sm); color: var(--brand-strong); align-items: center; justify-content: center; }
+  .hdr__toggle .i-close { display: none; }
+  .hdr__toggle[aria-expanded="true"] .i-open { display: none; }
+  .hdr__toggle[aria-expanded="true"] .i-close { display: block; }
+
+  @media (max-width: 1400px) { .hdr__tag { display: none; } }
+  @media (max-width: 1200px) {
+    .hdr__ppp { display: none; }
+    .hdr__toggle { display: inline-flex; }
+    .hdr__nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--white); border-top: 1px solid var(--border); box-shadow: var(--shadow-lg); flex-direction: column; align-items: stretch; padding: var(--space-4) var(--gutter) var(--space-6); gap: var(--space-4); max-height: calc(100dvh - var(--header-h)); overflow: auto; }
+    .hdr__nav.is-open { display: flex; }
+    .hdr__nav ul { flex-direction: column; gap: 0; }
+    .hdr__nav ul a { display: block; padding: 0.7rem 0; font-size: var(--fs-base); border-bottom: 1px solid var(--border); }
+    .hdr__nav a[aria-current="page"] { border-bottom-color: var(--border); border-left: 3px solid var(--gold-500); padding-left: 0.6rem; }
+    .hdr__cta { justify-content: center; }
+    .hdr__nav-mobile-extra { display: flex; justify-content: space-between; align-items: center; }
+  }
+  @media (max-width: 640px) {
+    .hdr__topbar-right .hdr__phone, .hdr__topbar-right :global(.lang) { display: none; }
+  }
+</style>

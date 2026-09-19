@@ -1,0 +1,39 @@
+key: about
+locale: en
+seo:
+  title: About Us
+  description: "Founded by a registered nurse, Golden Heart Haven LLC is more than a service provider — a haven where every individual is valued, respected, supported, and at home."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Our Story
+    title: A Heart for Service.
+    accent: A Vision for Community.
+    body: Golden Heart Haven LLC was created from a simple belief — compassionate care should feel personal.
+    image: { src: /images/placeholders/hero-about.svg, alt: "Portrait of the founder smiling in a bright room" }
+    sticker: ["People.", "Purpose.", "Possibilities."]
+  - type: textImage
+    eyebrow: Meet Our Founder
+    title: Nurse-Owned.
+    accent: Heart-Led.
+    body:
+      - With a background in nursing and a passion for supporting individuals with intellectual and developmental disabilities, our founder envisioned a place where individuals can receive high-quality, respectful HCS services while feeling respected, valued, and at home.
+      - Golden Heart Haven was founded to be more than a service provider. It was created to be a haven — a place where compassion, dignity, and belonging are part of everyday life.
+    cta: { label: Meet Our Founder, href: /contact/ }
+    image: { src: /images/placeholders/founder.svg, alt: "Cynthia Emelife, Founder and Registered Nurse" }
+    quote: Everyone deserves to feel valued, respected, supported, and at home.
+    quoteBy: Cynthia Emelife, Founder
+  - type: valueStrip
+    items:
+      - { icon: compass, title: Our Mission, text: "To provide compassionate, person-centered support that promotes dignity, independence, inclusion, and quality of life." }
+      - { icon: eye, title: Our Vision, text: "A community where every individual has the opportunity to feel valued, supported, empowered, and at home." }
+      - { icon: star, title: Our Values, text: "Compassion · Dignity · Integrity · Independence · Respect · Community" }
+  - type: quoteBand
+    quote: More than a service. A place to belong.
+    script: true
+  - type: ctaBand
+    title: Come See the
+    accent: Difference.
+    text: We welcome families and referral partners to reach out and learn more about Golden Heart Haven.
+    primaryCta: { label: Contact Us, href: /contact/ }
+    secondaryCta: { label: Our Services, href: /services/ }

@@ -1,0 +1,23 @@
+---
+/** Maps a content section (see src/content.config.ts) to its component. */
+import type { Section } from '../content.config';
+import type { Locale } from '../config/site';
+import Hero from './Hero.astro';
+import TextImage from './TextImage.astro';
+import ValueStrip from './ValueStrip.astro';
+import CardGrid from './CardGrid.astro';
+import CtaBand from './CtaBand.astro';
+import QuoteBand from './QuoteBand.astro';
+import ImageCollage from './ImageCollage.astro';
+import ContactForm from './ContactForm.astro';
+interface Props { section: Section; locale: Locale }
+const { section: s, locale } = Astro.props;
+---
+{s.type === 'hero' && <Hero {...s} />}
+{s.type === 'textImage' && <TextImage {...s} />}
+{s.type === 'valueStrip' && <ValueStrip {...s} />}
+{s.type === 'cardGrid' && <CardGrid {...s} locale={locale} />}
+{s.type === 'ctaBand' && <CtaBand {...s} />}
+{s.type === 'quoteBand' && <QuoteBand {...s} />}
+{s.type === 'imageCollage' && <ImageCollage {...s} />}
+{s.type === 'contactForm' && <ContactForm {...s} locale={locale} />}

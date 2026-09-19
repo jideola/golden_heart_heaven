@@ -1,0 +1,18 @@
+---
+import type { Locale, PageKey } from '../config/site';
+import { pathFor } from '../config/site';
+import { t } from '../i18n/ui';
+import Icon from './Icon.astro';
+interface Props { locale: Locale; currentKey?: PageKey }
+const { locale, currentKey } = Astro.props;
+const other: Locale = locale === 'en' ? 'es' : 'en';
+const href = pathFor(currentKey ?? 'home', other);
+const T = t(locale);
+---
+<a class="lang" href={href} hreflang={other} lang={other} aria-label={T('lang.switchAria')}>
+  <Icon name="globe" size={14} /> {T('lang.switch')}
+</a>
+<style>
+  .lang { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 600; text-decoration: none; color: var(--brand-strong); padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--white); font-size: var(--fs-xs); }
+  .lang:hover { border-color: var(--gold-500); }
+</style>

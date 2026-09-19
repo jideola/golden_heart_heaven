@@ -1,0 +1,18 @@
+---
+/** Title with optional eyebrow + script accent + gold rule. */
+interface Props { eyebrow?: string; title: string; accent?: string; intro?: string; align?: 'left' | 'center'; level?: 'h1' | 'h2' }
+const { eyebrow, title, accent, intro, align = 'left', level = 'h2' } = Astro.props;
+const Tag = level;
+---
+<div class:list={['sh', `sh--${align}`]}>
+  {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+  <Tag>{title}{accent && <> <span class="script sh__accent">{accent}</span></>}</Tag>
+  <div class="rule" />
+  {intro && <p class="lede">{intro}</p>}
+</div>
+<style>
+  .sh { margin-bottom: var(--space-6); }
+  .sh--center { text-align: center; }
+  .sh--center .rule, .sh--center .lede { margin-inline: auto; }
+  .sh__accent { display: inline-block; margin-left: 0.15em; transform: translateY(0.1em); }
+</style>

@@ -1,0 +1,39 @@
+key: about
+locale: es
+seo:
+  title: Sobre Nosotros
+  description: "Fundada por una enfermera titulada, Golden Heart Haven LLC es más que un proveedor de servicios: un refugio donde cada persona es valorada, respetada y se siente en casa."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Nuestra historia
+    title: Un corazón para servir.
+    accent: Una visión de comunidad.
+    body: Golden Heart Haven LLC nació de una convicción sencilla — el cuidado compasivo debe sentirse personal.
+    image: { src: /images/placeholders/hero-about.svg, alt: "Retrato de la fundadora sonriendo en una sala luminosa" }
+    sticker: ["Personas.", "Propósito.", "Posibilidades."]
+  - type: textImage
+    eyebrow: Conozca a nuestra fundadora
+    title: Dirigido por una enfermera.
+    accent: Guiado por el corazón.
+    body:
+      - Con formación en enfermería y una pasión por apoyar a personas con discapacidades intelectuales y del desarrollo, nuestra fundadora imaginó un lugar donde cada individuo pudiera recibir servicios HCS de alta calidad y con respeto, sintiéndose valorado y en casa.
+      - Golden Heart Haven se fundó para ser más que un proveedor de servicios. Se creó para ser un refugio — un lugar donde la compasión, la dignidad y la pertenencia forman parte de la vida diaria.
+    cta: { label: Conozca a nuestra fundadora, href: /es/contacto/ }
+    image: { src: /images/placeholders/founder.svg, alt: "Cynthia Emelife, fundadora y enfermera titulada" }
+    quote: Todos merecen sentirse valorados, respetados, apoyados y en casa.
+    quoteBy: Cynthia Emelife, Fundadora
+  - type: valueStrip
+    items:
+      - { icon: compass, title: Nuestra misión, text: "Brindar apoyo compasivo y centrado en la persona que promueva la dignidad, la independencia, la inclusión y la calidad de vida." }
+      - { icon: eye, title: Nuestra visión, text: "Una comunidad donde cada persona tenga la oportunidad de sentirse valorada, apoyada, empoderada y en casa." }
+      - { icon: star, title: Nuestros valores, text: "Compasión · Dignidad · Integridad · Independencia · Respeto · Comunidad" }
+  - type: quoteBand
+    quote: Más que un servicio. Un lugar al que pertenecer.
+    script: true
+  - type: ctaBand
+    title: Venga a ver la
+    accent: diferencia.
+    text: Invitamos a familias y socios de referencia a comunicarse y conocer más sobre Golden Heart Haven.
+    primaryCta: { label: Contáctenos, href: /es/contacto/ }
+    secondaryCta: { label: Nuestros servicios, href: /es/servicios/ }

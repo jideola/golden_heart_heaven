@@ -1,0 +1,26 @@
+---
+import SectionHeading from './SectionHeading.astro';
+interface Props { title?: string; accent?: string; images: { src: string; alt: string }[]; caption?: string }
+const { title, accent, images, caption } = Astro.props;
+---
+<section class="section">
+  <div class="container">
+    {title && <SectionHeading title={title} accent={accent} align="center" />}
+    <ul role="list" class="ic" style={`--n:${images.length}`}>
+      {images.map((im, i) => (
+        <li class:list={['ic__item', { 'ic__item--lg': i === 0 }]}>
+          <img src={im.src} alt={im.alt} width="640" height="480" loading="lazy" />
+        </li>
+      ))}
+    </ul>
+    {caption && <p class="script ic__caption">{caption}</p>}
+  </div>
+</section>
+<style>
+  .ic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 12rem; gap: var(--space-4); }
+  .ic__item { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .ic__item img { width: 100%; height: 100%; object-fit: cover; }
+  .ic__item--lg { grid-column: span 2; grid-row: span 2; }
+  .ic__caption { text-align: center; margin-top: var(--space-6); font-size: 2rem; }
+  @media (max-width: 760px) { .ic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 10rem; } }
+</style>

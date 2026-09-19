@@ -1,0 +1,43 @@
+key: services
+locale: es
+seo:
+  title: Servicios
+  description: "Apoyo HCS centrado en la persona en Houston: apoyo residencial, en la comunidad e individualizado, independencia y habilidades para la vida, y colaboración."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Nuestros servicios
+    title: Apoyo HCS centrado en la
+    accent: persona
+    body: En Golden Heart Haven LLC, nuestros servicios se diseñan en torno a las necesidades, preferencias, metas y plan centrado en la persona de cada individuo. Nos comprometemos a brindar un apoyo compasivo que promueva la independencia, la dignidad y una participación significativa en la comunidad.
+    primaryCta: { label: Contáctenos para saber más, href: /es/contacto/ }
+    image: { src: /images/placeholders/hero-services.svg, alt: "Una cuidadora y una persona riendo juntas en la mesa de la cocina" }
+    sticker: ["Apoyo hoy", "Mañanas", "más brillantes"]
+  - type: cardGrid
+    title: Cómo
+    accent: apoyamos
+    columns: 3
+    cards:
+      - { image: { src: /images/placeholders/service-residential.svg, alt: "Un dormitorio acogedor y bien cuidado" }, title: Apoyo residencial, text: "Un ambiente de hogar cómodo, diseñado para apoyar una vida plena en un entorno familiar y acogedor.", link: { label: Más información, href: /es/nuestros-hogares/ } }
+      - { image: { src: /images/placeholders/service-community.svg, alt: "Un grupo pequeño disfrutando de un paseo en el parque" }, title: Apoyo en la comunidad, text: "Fomentamos la participación, las relaciones y experiencias significativas en la comunidad — salidas, actividades y conexión.", link: { label: Más información, href: /es/contacto/ } }
+      - { image: { src: /images/placeholders/service-individualized.svg, alt: "Apoyo individual durante una actividad diaria" }, title: Apoyo individualizado, text: "Adaptado a las fortalezas, preferencias, capacidades y metas de cada persona — nunca una talla única.", link: { label: Más información, href: /es/contacto/ } }
+      - { image: { src: /images/placeholders/service-independence.svg, alt: "Una persona practicando una habilidad de cocina" }, title: Independencia y habilidades para la vida, text: "Apoyo con las actividades de la vida diaria y oportunidades para mayor independencia, confianza y elección.", link: { label: Más información, href: /es/para-individuos/ } }
+      - { image: { src: /images/placeholders/service-collaboration.svg, alt: "Una reunión del equipo de cuidado alrededor de una mesa" }, title: Colaboración, text: "Trabajamos junto a familias, tutores, coordinadores de servicios, administradores de casos, profesionales de la salud y trabajadores sociales.", link: { label: Más información, href: /es/socios-de-referencia/ } }
+  - type: textImage
+    reverse: true
+    title: Su vida. Sus decisiones.
+    accent: Nuestro apoyo.
+    body:
+      - Los servicios se prestan conforme a los requisitos aplicables del programa de Servicios en el Hogar y la Comunidad (HCS) de Texas HHS y a los servicios para los cuales Golden Heart Haven LLC está autorizada.
+      - Cada plan comienza escuchando — a la persona, a su familia y a su equipo de cuidado — para que el apoyo refleje lo que más importa a quien lo recibe.
+    bullets:
+      - Planificación centrada en la persona y definición de metas
+      - Apoyo 24/7 en un entorno de hogar
+      - Supervisión de salud y bienestar por un equipo dirigido por una enfermera
+      - Coordinación con coordinadores de servicios y proveedores
+    cta: { label: Contáctenos para saber más, href: /es/contacto/ }
+    image: { src: /images/placeholders/individual.svg, alt: "Un joven sonriendo cálidamente al aire libre" }
+  - type: ctaBand
+    title: ¿Listo para saber más?
+    text: Comuníquese para conversar sobre cómo nuestros servicios pueden apoyarle a usted o a un ser querido.
+    primaryCta: { label: Contáctenos, href: /es/contacto/ }

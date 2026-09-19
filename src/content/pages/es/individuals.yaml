@@ -1,0 +1,43 @@
+key: individuals
+locale: es
+seo:
+  title: Para Individuos
+  description: "Su hogar. Sus decisiones. Su vida. En Golden Heart Haven creemos en su potencial y le apoyamos para vivir una vida plena, independiente y satisfactoria."
+sections:
+  - type: hero
+    compact: true
+    eyebrow: Para individuos
+    title: Su hogar. Sus decisiones.
+    accent: Su vida.
+    body: En Golden Heart Haven creemos en su potencial. Estamos aquí para apoyarle a vivir una vida plena, independiente y satisfactoria en su comunidad.
+    primaryCta: { label: Más información, href: /es/contacto/ }
+    image: { src: /images/placeholders/hero-individuals.svg, alt: "Un joven levantando el pulgar y sonriendo ampliamente" }
+    sticker: ["Capacidades diferentes.", "Futuros", "más brillantes."]
+  - type: valueStrip
+    items:
+      - { icon: sparkles, title: Sea usted mismo }
+      - { icon: hands, title: Tome decisiones }
+      - { icon: book, title: Desarrolle habilidades }
+      - { icon: compass, title: Explore sus intereses }
+      - { icon: people, title: Sea parte de su comunidad }
+  - type: textImage
+    reverse: true
+    title: Un hogar que se siente
+    accent: suyo
+    body:
+      - Su habitación es su espacio. Su rutina es su rutina. Le apoyamos en lo que quiere hacer — cocinar, trabajar, aprender, salir con amigos, practicar su fe o simplemente descansar.
+      - Nuestro equipo está aquí para ayudarle a desarrollar habilidades, probar cosas nuevas y expresar lo que quiere.
+    bullets:
+      - Ayuda con la vida diaria, la salud y el bienestar
+      - Apoyo para trabajar, hacer voluntariado o participar en actividades
+      - Aliento para tomar sus propias decisiones
+      - Un equipo que escucha y le respeta
+    cta: { label: Venga a visitarnos, href: /es/contacto/ }
+    image: { src: /images/placeholders/individual.svg, alt: "Una persona sonriendo en un dormitorio acogedor" }
+  - type: quoteBand
+    quote: Personas. Propósito. Posibilidades.
+    script: true
+  - type: ctaBand
+    title: ¿Quiere saber más?
+    text: Pida a un familiar, tutor o coordinador de servicios que se comunique — o contáctenos usted mismo.
+    primaryCta: { label: Contáctenos, href: /es/contacto/ }

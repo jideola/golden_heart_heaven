@@ -1,0 +1,4 @@
+# Indexing is controlled per page by the robots meta tag (PUBLIC_NOINDEX).
+User-agent: *
+Allow: /
+Sitemap: /sitemap-index.xml

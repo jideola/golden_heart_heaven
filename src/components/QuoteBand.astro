@@ -1,0 +1,16 @@
+---
+interface Props { quote: string; attribution?: string; script?: boolean }
+const { quote, attribution, script } = Astro.props;
+---
+<section class="section--tight qb">
+  <figure class="container qb__fig">
+    <blockquote class:list={{ 'script qb__script': script, 'qb__serif': !script }}>“{quote}”</blockquote>
+    {attribution && <figcaption>— {attribution}</figcaption>}
+  </figure>
+</section>
+<style>
+  .qb { background: var(--cream-100); border-block: 1px solid var(--border); text-align: center; }
+  .qb__serif { font-family: var(--font-display); font-size: var(--fs-xl); color: var(--brand-strong); line-height: var(--lh-snug); max-width: 40ch; margin-inline: auto; }
+  .qb__script { color: var(--brand-strong); max-width: 30ch; margin-inline: auto; }
+  figcaption { margin-top: var(--space-3); color: var(--accent-text); font-weight: 600; font-size: var(--fs-sm); }
+</style>
