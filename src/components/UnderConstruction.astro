@@ -1,7 +1,8 @@
 ---
 /**
- * Under-construction notice: a native <dialog> (focus-trapped, Escape closes) shown
- * once per browser session, plus a persistent top banner that can reopen it.
+ * Under-construction notice: a native <dialog> (focus-trapped, Escape closes) shown on
+ * every load of the home page and once per browser session on other pages, plus a
+ * persistent top banner that can reopen it.
  * Rendered only while site.underConstruction is true (PUBLIC_UNDER_CONSTRUCTION).
  */
 import type { Locale } from '../config/site';
@@ -38,8 +39,9 @@ const T = t(locale);
   const KEY = 'ghh-wip-dismissed';
   const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch { return false; } };
   const remember = () => { try { sessionStorage.setItem(KEY, '1'); } catch {} };
+  const isHome = /^\/(es\/)?$/.test(location.pathname);
   if (dialog && typeof dialog.showModal === 'function') {
-    if (!seen()) dialog.showModal();
+    if (isHome || !seen()) dialog.showModal();
     dialog.addEventListener('close', remember);
     dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); }); // backdrop click
     document.querySelectorAll('[data-wip-open]').forEach((b) => b.addEventListener('click', () => dialog.showModal()));
